@@ -1,9 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import Navbar from "./Navbar/page";
 import Footer from "./Footer/page";
-
-
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -16,58 +15,29 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  metadataBase: new URL("https://your-domain.vercel.app"),
-
-  title: {
-    default: "GenerateKit - Free Developer Tools",
-    template: "%s | GenerateKit",
-  },
-
-  description:
-    "Free online developer tools including Password Generator, JWT Secret Generator, UUID Generator, API Key Generator, SHA-256 Generator, BCrypt Generator, Base64 Encoder and JSON Formatter.",
-
-  keywords: [
-    "password generator",
-    "jwt secret generator",
-    "uuid generator",
-    "api key generator",
-    "bcrypt generator",
-    "sha256 generator",
-    "base64 encoder",
-    "json formatter",
-    "developer tools",
-    "free developer tools",
-  ],
-
-  authors: [{ name: "Mohammed Zakaria" }],
-
-  creator: "Mohammed Zakaria",
-
-  openGraph: {
-    title: "GenerateKit - Free Developer Tools",
-    description:
-      "Generate passwords, JWT secrets, UUIDs, API keys and use many other free developer tools.",
-    url: "https://your-domain.vercel.app",
-    siteName: "GenerateKit",
-    locale: "en_US",
-    type: "website",
-  },
-
-  robots: {
-    index: true,
-    follow: true,
-  },
+  metadataBase: new URL("https://generate-kit.vercel.app"),
+  // ...rest of your metadata
 };
 
 export default function RootLayout({ children }) {
   return (
-    <html 
-    lang="en"
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}>
+    <html
+      lang="en"
+      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
+    >
+      <head>
+        <Script
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2758451535722519"
+          crossOrigin="anonymous"
+          strategy="afterInteractive"
+        />
+      </head>
+
       <body className="min-h-full flex flex-col bg-slate-950 text-white">
-        <Navbar/>
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
